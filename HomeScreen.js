@@ -20,14 +20,17 @@ export const Loading = () =>
     <View style={styles.container}>
         <Text>{"Loading..."}</Text>
     </View>
-    
+
+export const Error = () => {
+    <View style={styles.container}>
+        <Text>{"Error"}</Text>
+    </View>
+}
+
 const HomeScreen = ({ navigation }) => {
     const { data, loading, error } = useQuery(HOME_PAGE)
     if (loading) return <Loading />
-    if (error) {
-        console.log(error)
-        return <View style={styles.container}><Text>{"Error"}</Text></View>
-    }
+    if (error) <Error />
     console.log(data)
     return (
         <ScrollView style={{ flex: 1 }}>
